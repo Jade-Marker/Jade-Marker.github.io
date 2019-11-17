@@ -26,33 +26,109 @@
 					<div id="main">
 
 						<!-- Content -->
-							<section id="content" class="main">
-								<span class="image main"><img src="images/tank-game-full-screenshot.png" alt="" /></span>
-								<h2>What is Tank Game?</h2>
-                                <p>Tank Game is a third person tank shooter. It was made in Unity by myself, Dan Arrowsmith and Brandon Hacking as part of the
-                                'Staffs University Welcome Week Game Jam In Cooperation With Codemasters And Playground'.</p>
+                        <section id="content" class="main">
+                            <span class="image main"><img src="images/tank-game-full-screenshot.png" alt="" /></span>
+                            <h2>What is Tank Game?</h2>
+                            <p>
+                                Tank Game is a third person tank shooter. It was made in Unity by myself, Dan Arrowsmith and Brandon Hacking as part of the
+                                'Staffs University Welcome Week Game Jam In Cooperation With Codemasters And Playground'.
+                            </p>
 
-								<h2>Who did what?</h2>
-                                <p>The programming was done by myself, while the level design was done by Dan and Brandon.</p>
+                            <h2>Who did what?</h2>
+                            <p>The programming was done by myself, while the level design was done by Dan and Brandon.</p>
 
-                                <h2>When was the game jam?</h2>
-                                <p>The game jam lasted from the 17th to the 19th of September with judging on the 20th</p>
+                            <h2>When was the game jam?</h2>
+                            <p>The game jam lasted from the 17th to the 19th of September with judging on the 20th</p>
 
-                                <h2>What are the controls?</h2>
-                                <p>W and S move the tank forwards and backwards, while A and D rotate the tank body. The left and right arrow keys are used to rotate the tank head.
-                                To shoot, press space. </p>
+                            <h2>What are the controls?</h2>
+                            <p>
+                                W and S move the tank forwards and backwards, while A and D rotate the tank body. The left and right arrow keys are used to rotate the tank head.
+                                To shoot, press space.
+                            </p>
 
-                                <h2>What went right/wrong during development?</h2>
-                                <p>One of the things that went right was team work, as we were able to work well as a team. When we would meet up, I would show the other two what I had and get
-                                feedback, seeing what they thought worked or didn't work.<br/>
+                            <h2>What went right/wrong during development?</h2>
+                            <p>
+                                One of the things that went right was team work, as we were able to work well as a team. When we would meet up, I would show the other two what I had and get
+                                feedback, seeing what they thought worked or didn't work.<br />
                                 One of the things that went wrong was getting the bullets working. When we had the idea for Tank Game, one of the key features we wanted was bullets to bounce
                                 off of walls. In theory, this should have been simple. However, during development I just wasn't able to get the vector maths right.
-                                So I had to have the bullets rotate when they collide with the walls. Because of this, in some cases, the bullets are able to travel through the walls.</p>
+                                So I had to have the bullets rotate when they collide with the walls. Because of this, in some cases, the bullets are able to travel through the walls.
+                            </p>
 
-                                <h2>Where can I play the game/access the source code?</h2>
-                                <p>Both the game and the source code can be found on my github account. Alternatively, you can click 
-                                <a href="https://github.com/Daniel-Marker/Comic-Sans-Tank-Game">here</a> to go straight to the github page.</p>
-							</section>
+                            <h2>Where can I play the game/access the source code?</h2>
+                            <p>
+                                Both the game and the source code can be found on my github account. Alternatively, you can click
+                                <a href="https://github.com/Daniel-Marker/Comic-Sans-Tank-Game">here</a> to go straight to the github page.
+                            </p>
+
+                            <h2>Screenshots</h2>
+                            <span id="screenshots" style="display: flex; justify-content: center;">
+                                <!--default image-->
+                                <img id="img" src="images/tank-game-screenshot-01.png" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                            </span>
+
+                            <script>
+                                var images = ["images/tank-game-screenshot-01.png", "images/tank-game-screenshot-02.png", "images/tank-game-screenshot-03.png"];
+
+                                var index = 0;
+
+                                function output(){
+                                index++;
+                                if(index > images.length-1)
+                                {
+                                index = 0;
+                                }
+
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                }
+
+                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                                function fadeIn(el) {
+                                el.style.opacity = 0;
+                                var tick = function () {
+                                el.style.opacity = +el.style.opacity + 0.01;
+                                if (+el.style.opacity < 1) {
+                                (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                }
+                                };
+                                tick();
+                                }
+
+                                function nextPicture()
+                                {
+                                index++;
+                                if(index > images.length-1)
+                                {
+                                index = 0;
+                                }
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                clearInterval();
+                                }
+
+                                function previousPicture()
+                                {
+                                index--;
+                                if(index < 0)
+                                {
+                                index = images.length-1;
+                                }
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                clearInterval();
+                                }
+
+                                window.setInterval(output, 10000);
+                            </script>
+
+                            <br />
+
+                            <div style="text-align: center;">
+                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                                <button type="button" onclick="nextPicture()">Next</button>
+                            </div>
+                        </section>
 
 					</div>
 

@@ -26,26 +26,94 @@
 					<div id="main">
 
 						<!-- Content -->
-							<section id="content" class="main">
-								<span class="image main"><img src="images/rc-racing-full-screenshot.png" alt="" /></span>
-								<h2>What is RC Racing?</h2>
-                                <p>RC Racing is a racing game made in Unity. It was made for the 2019 GMTK game jam.</p>
+                        <section id="content" class="main">
+                            <span class="image main"><img src="images/rc-racing-full-screenshot.png" alt="" /></span>
+                            <h2>What is RC Racing?</h2>
+                            <p>RC Racing is a racing game made in Unity. It was made for the 2019 GMTK game jam.</p>
 
-								<h2>Who did what?</h2>
-                                <p></p>
+                            <h2>Who did what?</h2>
+                            <p></p>
 
-                                <h2>When was the game jam?</h2>
-                                <p></p>
+                            <h2>When was the game jam?</h2>
+                            <p></p>
 
-                                <h2>What are the controls?</h2>
-                                <p></p>
+                            <h2>What are the controls?</h2>
+                            <p></p>
 
-                                <h2>What went right/wrong during development?</h2>
-                                <p></p>
+                            <h2>What went right/wrong during development?</h2>
+                            <p></p>
 
-                                <h2>Where can I play the game/access the source code?</h2>
-                                <p></p>
-							</section>
+                            <h2>Where can I play the game/access the source code?</h2>
+                            <p></p>
+
+                            <h2>Screenshots</h2>
+                            <span id="screenshots" style="display: flex; justify-content: center;">
+                                <!--default image-->
+                                <img id="img" src="images/rc-racing-screenshot-01.png" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                            </span>
+
+                            <script>
+                                var images = ["images/rc-racing-screenshot-01.png", "images/rc-racing-screenshot-02.png", "images/rc-racing-screenshot-03.png"];
+
+                                var index = 0;
+
+                                function output(){
+                                index++;
+                                if(index > images.length-1)
+                                {
+                                index = 0;
+                                }
+
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                }
+
+                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                                function fadeIn(el) {
+                                el.style.opacity = 0;
+                                var tick = function () {
+                                el.style.opacity = +el.style.opacity + 0.01;
+                                if (+el.style.opacity < 1) {
+                                (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                }
+                                };
+                                tick();
+                                }
+
+                                function nextPicture()
+                                {
+                                index++;
+                                if(index > images.length-1)
+                                {
+                                index = 0;
+                                }
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                clearInterval();
+                                }
+
+                                function previousPicture()
+                                {
+                                index--;
+                                if(index < 0)
+                                {
+                                index = images.length-1;
+                                }
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                clearInterval();
+                                }
+
+                                window.setInterval(output, 10000);
+                            </script>
+
+                            <br />
+
+                            <div style="text-align: center;">
+                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                                <button type="button" onclick="nextPicture()">Next</button>
+                            </div>
+                        </section>
 
 					</div>
 
