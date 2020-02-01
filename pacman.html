@@ -27,7 +27,7 @@
 
 						<!-- Content -->
                         <section id="content" class="main">
-                            <span class="image main"><img src="images/pacman-full-screenshot.png" alt="" /></span>
+                            <span class="image main"><img src="images/pacman-full-screenshot.PNG" alt="" /></span>
                             <h2>What is it?</h2>
                             <p>This project is a recreation of Pacman using the S2D library which was created by Staffordshire University.</p>
 
@@ -59,6 +59,73 @@
 							Both the game and the source code can be found on my github account. Alternatively, you can click
                                 <a href="https://github.com/Daniel-Marker/Pacman"target="_blank">here</a> to go straight to the github page.
                             </p>
+							
+							  <h2>Screenshots</h2>
+                            <span id="screenshots" style="display: flex; justify-content: center;">
+                                <!--default image-->
+                                <img id ="img"src="images/pacman-screenshot-01.PNG" style="max-height: 100vh; max-width: 100%; margin: auto"/>
+                            </span>
+
+                            <script>
+                                var images = ["images/pacman-screenshot-01.PNG", "images/pacman-screenshot-02.PNG", "images/pacman-screenshot-03.PNG"];
+                                
+                                var index = 0;
+
+                                function output(){                                    
+                                    index++;
+                                    if(index > images.length-1)
+                                    {
+                                        index = 0;
+                                    }
+                                    
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                }
+
+                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                                function fadeIn(el) {
+                                    el.style.opacity = 0;
+                                    var tick = function () {
+                                        el.style.opacity = +el.style.opacity + 0.01;
+                                        if (+el.style.opacity < 1) {
+                                            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                        }
+                                    };
+                                tick();
+                                }
+
+                                function nextPicture()
+                                {
+                                    index++;
+                                    if(index > images.length-1)
+                                    {
+                                        index = 0;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                function previousPicture()
+                                {
+                                    index--;
+                                    if(index < 0)
+                                    {
+                                        index = images.length-1;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                window.setInterval(output, 10000);
+                            </script>
+                            <br/>
+
+                            <div style="text-align: center;">
+                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                                <button type="button" onclick="nextPicture()">Next</button>
+                            </div>
                         </section>
 
 					</div>
