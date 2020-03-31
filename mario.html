@@ -32,19 +32,91 @@
 
 							<h2>Who did what?</h2>
 							<p>
-								During tutorials, we were given some code to learn how to use SDL and we were given some graphics from the original game. 
+								During tutorials, we were given some code to learn how to use SDL and we were given some graphics from the original game.
 								Additionally, for some sections, we were given incomplete code for features such as the POW block that we had to finish.
 								Other than using this as a base, everything else on the project is made by myself.
 							</p>
 
 							<h2>When was it worked on?</h2>
-							<p>Work started on the project around January of 2020. The project will be worked on until the start of April 2020</p>
+							<p>Work started on the project around January of 2020. The project will be worked on until May 1st 2020</p>
 
 							<h2>Where can I play the game/access the source code?</h2>
 							<p>
 								As the project is still in development, the source code and game are currently not available.
 								However, once the deadline has passed a link to the repo will be made available.
 							</p>
+
+							<h2>Where can I stay updated on the project?</h2>
+							<p>
+								I post regularly about my this Mario project on my <a href="https://twitter.com/DanielMarker15" target="_blank">twitter</a> under the hashtag #mario
+							</p>
+
+							<h2>In development screenshots</h2>
+							<span id="screenshots" style="display: flex; justify-content: center;">
+								<!--default image-->
+								<img id="img" src="images/mario-screenshot-01.PNG" style="max-height: 100vh; max-width: 100%; margin: auto" />
+							</span>
+
+							<script>
+								var images = ["images/mario-screenshot-01.PNG", "images/mario-screenshot-02.PNG"];
+
+								var index = 0;
+
+								function output(){
+								index++;
+								if(index > images.length-1)
+								{
+								index = 0;
+								}
+
+								document.getElementById("img").src = images[index];
+								fadeIn(document.getElementById("img"));
+								}
+
+								//taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+								function fadeIn(el) {
+								el.style.opacity = 0;
+								var tick = function () {
+								el.style.opacity = +el.style.opacity + 0.01;
+								if (+el.style.opacity < 1) {
+								(window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+								}
+								};
+								tick();
+								}
+
+								function nextPicture()
+								{
+								index++;
+								if(index > images.length-1)
+								{
+								index = 0;
+								}
+								document.getElementById("img").src = images[index];
+								fadeIn(document.getElementById("img"));
+								clearInterval();
+								}
+
+								function previousPicture()
+								{
+								index--;
+								if(index < 0)
+								{
+								index = images.length-1;
+								}
+								document.getElementById("img").src = images[index];
+								fadeIn(document.getElementById("img"));
+								clearInterval();
+								}
+
+								window.setInterval(output, 10000);
+							</script>
+							<br />
+
+							<div style="text-align: center;">
+								<button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+								<button type="button" onclick="nextPicture()">Next</button>
+							</div>
 						</section>
 
 					</div>

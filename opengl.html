@@ -31,20 +31,93 @@
                             <p>This project is a simple game made using OpenGL, freeglut and glew.</p>
 
                             <h2>Who did what?</h2>
-                            <p>During tutorials, we were given some code which could be used to make a basic OpenGL application. However, this was for OpenGL 1.1. 
-                            So, I ported the tutorial code to modern OpenGL and updated it based off of code from 
-                            <a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2" target="_blank">The Cherno's OpenGL series (1-27)</a>.
-                            Other than using these as a base, everything else on the project is made by myself.
+                            <p>
+                                During tutorials, we were given some code which could be used to make a basic OpenGL application. However, this was for OpenGL 1.1.
+                                So, I ported the tutorial code to modern OpenGL and updated it based off of code from
+                                <a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2" target="_blank">The Cherno's OpenGL series (1-27)</a>.
+                                Other than using these as a base, everything else on the project is made by myself.
                             </p>
 
                             <h2>When was it worked on?</h2>
-                            <p>Work started on the project around January of 2020. The project will be worked on until the start of April 2020</p>
+                            <p>Work started on the project around January of 2020. The project will be worked on until May 1st 2020</p>
 
                             <h2>Where can I play the game/access the source code?</h2>
                             <p>
-                                As the project is still in development, the source code and game are currently not available. 
+                                As the project is still in development, the source code and game are currently not available.
                                 However, once the deadline has passed a link to the repo will be made available.
                             </p>
+
+                            <h2>Where can I stay updated on the project?</h2>
+                            <p>
+                                I post regularly about this OpenGL project on my <a href="https://twitter.com/DanielMarker15" target="_blank">twitter</a> under the hashtag #opengl
+                            </p>
+
+                            <h2>In development screenshots</h2>
+                            <span id="screenshots" style="display: flex; justify-content: center;">
+                                <!--default image-->
+                                <img id="img" src="images/opengl-screenshot-01.PNG" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                            </span>
+
+                            <script>
+                                var images = ["images/opengl-screenshot-01.PNG", "images/opengl-screenshot-02.PNG"];
+
+                                var index = 0;
+
+                                function output(){
+                                index++;
+                                if(index > images.length-1)
+                                {
+                                index = 0;
+                                }
+
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                }
+
+                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                                function fadeIn(el) {
+                                el.style.opacity = 0;
+                                var tick = function () {
+                                el.style.opacity = +el.style.opacity + 0.01;
+                                if (+el.style.opacity < 1) {
+                                (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                }
+                                };
+                                tick();
+                                }
+
+                                function nextPicture()
+                                {
+                                index++;
+                                if(index > images.length-1)
+                                {
+                                index = 0;
+                                }
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                clearInterval();
+                                }
+
+                                function previousPicture()
+                                {
+                                index--;
+                                if(index < 0)
+                                {
+                                index = images.length-1;
+                                }
+                                document.getElementById("img").src = images[index];
+                                fadeIn(document.getElementById("img"));
+                                clearInterval();
+                                }
+
+                                window.setInterval(output, 10000);
+                            </script>
+                            <br />
+
+                            <div style="text-align: center;">
+                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                                <button type="button" onclick="nextPicture()">Next</button>
+                            </div>
                         </section>
 
 					</div>
