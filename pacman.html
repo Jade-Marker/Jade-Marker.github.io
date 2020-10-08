@@ -28,56 +28,65 @@
 						<!-- Content -->
                         <section id="content" class="main">
                             <span class="image main"><img src="images/pacman-full-screenshot.PNG" alt="" /></span>
+                            <span id="video" style="display: flex; justify-content: center;">
+                                <p>
+                                    <div class="iframe-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/KhEX1ytMoBM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                    </div>
+                                </p>
+                            </span>
+                            <br />
+
                             <h2>What is it?</h2>
                             <p>This project is a recreation of Pacman using the S2D library which was created by Staffordshire University.</p>
 
                             <h2>Who did what?</h2>
-                            <p>We were provided with an initial framework to use. During tutorials, we were also given some code snippets.
-                            Additionally, during early development I used some graphics provided by the university and graphics from the original Pacman.
-                            Other than those all programming, art and music was done by myself.</p>
+                            <p>
+                                We were provided with an initial framework to use. During tutorials, we were also given some code snippets.
+                                Additionally, during early development I used some graphics provided by the university and graphics from the original Pacman.
+                                Other than those all programming, art and music was done by myself.
+                            </p>
 
                             <h2>When was it worked on?</h2>
                             <p>Work started on the project around September of 2019 and finished on the 13th of December of 2019</p>
 
                             <h2>What are the controls?</h2>
                             <p>WASD to move pacman. Space to start the game, P to pause the game and R to restart on gameover.</p>
-							
-							<h2>What went right/wrong during development?</h2>
+
+                            <h2>What went right/wrong during development?</h2>
                             <p>
-								I think that the thing that I'm most proud of from this project was the AI. During development, I wanted to make the AI of the ghosts as accurate to the original as possible. 
-								Although I did have to concede with some aspects of the AI (timings for ghosts to leave the ghost house, etc), I think that the differences in the AI wouldn't be noticable to a 
-								majority of players.
+                                I think that the thing that I'm most proud of from this project was the AI. During development, I wanted to make the AI of the ghosts as accurate to the original as possible.
+                                Although I did have to concede with some aspects of the AI (timings for ghosts to leave the ghost house, etc), I think that the differences in the AI wouldn't be noticable to a
+                                majority of players.
                                 <br />
-                                I think that during this project, I spent too much time on the AI. While I am proud of the AI and am happy with how it turned out, 
-								I think that other parts of the program suffered because of it. E.g. there is only music on the death screen due to not having time to write any more.
-								Additionally, there is a slight problem in that the player sprite is able to overlap slightly with the maze. 
-								I intended to fix this, however towards the end of development I felt that there were other more important problems to fix.
+                                I think that during this project, I spent too much time on the AI. While I am proud of the AI and am happy with how it turned out,
+                                I think that other parts of the program suffered because of it. E.g. there is only music on the death screen due to not having time to write any more.
+                                Additionally, there is a slight problem in that the player sprite is able to overlap slightly with the maze.
+                                I intended to fix this, however towards the end of development I felt that there were other more important problems to fix.
                             </p>
-							
+
                             <h2>Where can I play the game/access the source code?</h2>
                             <p>
-							Both the game and the source code can be found on my github account. Alternatively, you can click
-                                <a href="https://github.com/Daniel-Marker/Pacman"target="_blank">here</a> to go straight to the github page.
+                                Both the game and the source code can be found on my github account. Alternatively, you can click
+                                <a href="https://github.com/Daniel-Marker/Pacman" target="_blank">here</a> to go straight to the github page.
                             </p>
-							
-							  <h2>Screenshots</h2>
+
+                            <h2>Screenshots</h2>
                             <span id="screenshots" style="display: flex; justify-content: center;">
                                 <!--default image-->
-                                <img id ="img"src="images/pacman-screenshot-01.PNG" style="max-height: 100vh; max-width: 100%; margin: auto"/>
+                                <img id="img" src="images/pacman-screenshot-01.PNG" style="max-height: 100vh; max-width: 100%; margin: auto" />
                             </span>
 
                             <script>
                                 var images = ["images/pacman-screenshot-01.PNG", "images/pacman-screenshot-02.PNG", "images/pacman-screenshot-03.PNG"];
-                                
+
                                 var index = 0;
 
-                                function output(){                                    
+                                function output() {
                                     index++;
-                                    if(index > images.length-1)
-                                    {
+                                    if (index > images.length - 1) {
                                         index = 0;
                                     }
-                                    
+
                                     document.getElementById("img").src = images[index];
                                     fadeIn(document.getElementById("img"));
                                 }
@@ -91,14 +100,12 @@
                                             (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
                                         }
                                     };
-                                tick();
+                                    tick();
                                 }
 
-                                function nextPicture()
-                                {
+                                function nextPicture() {
                                     index++;
-                                    if(index > images.length-1)
-                                    {
+                                    if (index > images.length - 1) {
                                         index = 0;
                                     }
                                     document.getElementById("img").src = images[index];
@@ -106,12 +113,10 @@
                                     clearInterval();
                                 }
 
-                                function previousPicture()
-                                {
+                                function previousPicture() {
                                     index--;
-                                    if(index < 0)
-                                    {
-                                        index = images.length-1;
+                                    if (index < 0) {
+                                        index = images.length - 1;
                                     }
                                     document.getElementById("img").src = images[index];
                                     fadeIn(document.getElementById("img"));
@@ -120,7 +125,7 @@
 
                                 window.setInterval(output, 10000);
                             </script>
-                            <br/>
+                            <br />
 
                             <div style="text-align: center;">
                                 <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
