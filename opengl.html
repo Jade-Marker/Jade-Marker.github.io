@@ -28,6 +28,12 @@
 						<!-- Content -->
                         <section id="content" class="main">
                             <span class="image main"><img src="images/opengl-full-screenshot.png" alt="" /></span>
+                            <h2>Video</h2>
+                            <span id="video" style="display: flex; justify-content: center;">
+                                <p>
+                                    <iframe width="960" height="540" src="https://www.youtube.com/embed/qOrk5F22B4o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>                                </p>
+                            </span>
+
                             <h2>What is it?</h2>
                             <p>This project is a simple walking simulator game made using OpenGL, freeglut and glew.</p>
 
@@ -38,11 +44,11 @@
                                 (adding Buffer, BufferLayout, Renderer, Shader and VAO classes) based off of code from
                                 <a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2">The Cherno's OpenGL series (1-27).</a> <br />
                                 Additional resources used: <br />
-                                <a href = "https://learnopengl.com/Advanced-OpenGL/Cubemaps                                                      ">Tutorial that Cubemap class and Skybox shaders are based off </a><br />
-                                <a href = "https://learnopengl.com/Getting-started/Camera                                                        ">Tutorial that Camera is based off                            </a><br />
-                                <a href = "https://www.jkh.me/files/tutorials/Separating%20Axis%20Theorem%20for%20Oriented%20Bounding%20Boxes.pdf">Source used to get the axis and formula for SAT              </a><br />
-                                <a href = "https://learnopengl.com/Lighting/Basic-Lighting">Tutorial used for lighting in shaders         </a><br />
-                                <a href = "https://learnopengl.com/Lighting/Materials">Tutorial used for materials in shaders         </a><br />
+                                <a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps                                                      ">Tutorial that Cubemap class and Skybox shaders are based off </a><br />
+                                <a href="https://learnopengl.com/Getting-started/Camera                                                        ">Tutorial that Camera is based off                            </a><br />
+                                <a href="https://www.jkh.me/files/tutorials/Separating%20Axis%20Theorem%20for%20Oriented%20Bounding%20Boxes.pdf">Source used to get the axis and formula for SAT              </a><br />
+                                <a href="https://learnopengl.com/Lighting/Basic-Lighting">Tutorial used for lighting in shaders         </a><br />
+                                <a href="https://learnopengl.com/Lighting/Materials">Tutorial used for materials in shaders         </a><br />
                                 <br />
 
                                 In addition to using some tutorials, the following textures and 3d models were used: <br />
@@ -74,34 +80,36 @@
                             <p>Work started on the project around January of 2020 and finished at the end of April 2020</p>
 
                             <h2>What are the controls?</h2>
-                            <p>WASD to move and mouse to move the camera. I and O can be pressed to dim the lights and to turn them back on. 
-                            P can be pressed to make the penguins rotate about the z axis.</p>
+                            <p>
+                                WASD to move and mouse to move the camera. I and O can be pressed to dim the lights and to turn them back on.
+                                P can be pressed to make the penguins rotate about the z axis.
+                            </p>
 
                             <h2>What went right/wrong during development?</h2>
                             <p>
                                 One of the things that went right was shaders. Up until starting this project, I had never done shader programming or branchless programming.
                                 Because of this, I was unsure if I would be able to figure them out. I was however able to write basic lighting shaders and a wave effect shader for the fish.
-                                I do think however that the code surrounding the shaders could have been improved to allow for #include. 
+                                I do think however that the code surrounding the shaders could have been improved to allow for #include.
                                 This way, code wouldn't have had to have been copied from one shader to another.
                                 <br />
 
                                 Another thing that I think went well was the collision detection code.
                                 For a project like this, it would be expected that the algorithm used for collision detection would be aabb (axis aligned bounding boxes).
-                                I however chose not to use this as it does not allow for rotating colliders. I instead chose to use SAT (separating axis theorem). 
-                                It took me a while to fully understand the algorithm. However, once I understood it, writing the code for it didn't take too long. 
-                                This now allowed me flexibility in how objects and their colliders were positioned in the level. 
+                                I however chose not to use this as it does not allow for rotating colliders. I instead chose to use SAT (separating axis theorem).
+                                It took me a while to fully understand the algorithm. However, once I understood it, writing the code for it didn't take too long.
+                                This now allowed me flexibility in how objects and their colliders were positioned in the level.
                                 <br />
-                                
-                                Another thing I think went well was transparent objects. 
+
+                                Another thing I think went well was transparent objects.
                                 Getting transparent objects rendering correctly required my program to sort objects into transparent and opaque each frame.
                                 It then rendered all opaque objects and sorted the transparent objects by their distance from the camera and rendered them back to front.
                                 One downside of the way I implemented transparent objects is that the back faces of transparent objects aren't visible. This can be seen in the display cases.
 
                                 <br /> <br />
-                                One of the big problems with this project is that scene objects were all defined in the code. 
-                                This meant that any changes to the level layout required recompiling the project. 
+                                One of the big problems with this project is that scene objects were all defined in the code.
+                                This meant that any changes to the level layout required recompiling the project.
                                 Additionally, it meant that creating the level required writing a bit of code and then checking how it looked.
-                                Then editing the code slightly and checking how that looked, and so on. 
+                                Then editing the code slightly and checking how that looked, and so on.
                                 This was a tedious process that could have been solved by having an editor. I chose however to not attempt to make an editor, as I didn't think I had the time to.
 
                             </p>
