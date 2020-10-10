@@ -1,0 +1,195 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        <title>Gameboy Ram Program</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+                        <h1>Gameboy Ram Program</h1>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+                        <section id="content" class="main">
+                            <span class="image main"><img src="images/gameboy-ram-full-screenshot.png" alt="" /></span>
+
+                            <span id="video" style="display: flex; justify-content: center;">
+                                <p>
+                                    <div class="iframe-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/HPgH9nfwux8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </p>
+                            </span>
+                            <br />
+
+                            <h2>What is it?</h2>
+                            <p>
+                                This project is an exploration of the concept of cartridge swapping on the Game Boy.
+                                This is achieved by copying a program into RAM, and then telling the player to swap the cartridge.
+                                Once this is done, the program in RAM is run. The program can now interact with the new cartridge.
+                                <br />
+                                For this project, I wanted to see what I could do with the concept of cartridge swapping with the Game Boy.
+                                Aside from a flashcart, the only cartridge I owned was a Pokemon Red repro cart. So, I decided that I would attempt the following:
+                                launching into the game from the ram program, editing the save so that the player name changed, and using the games graphics functions to display a Pokemon.
+                            </p>
+
+                            <h2>Who did what?</h2>
+                            <p>
+                                <a href="https://opengameart.org/content/squont8" target="_blank">The font used</a> <br />
+                                <a href="https://github.com/pret/pokered" target="_blank">The disassembly used</a><br />
+
+                                Everything else in the project was done by myself
+
+                            </p>
+
+                            <h2>When was it worked on?</h2>
+                            <p>Work started on the project around July of 2020 and finished at the start of September</p>
+
+                            <h2>What are the controls?</h2>
+                            <p>Up and down move the arrow on the menu, and A is used to select an option. The bindings for these inputs are set by the emulator.</p>
+
+                            <h2>What went right/wrong during development?</h2>
+                            <p>
+                                One of the things that went right in this project was the readability of the code. 
+                                With my last project for the Game Boy, as I was still new to writing assembly code, the code isn't particularly readable in some areas.
+                                However, since then I have improved a lot. As a result, the code was significantly more readable this time. 
+                                Additionally, code was split between files much better than last time.
+                                
+                                <br />
+                                Another thing that went right was fixing issues as they arose. During this project, I ran into a strange problem with launching the game from my program.
+                                When I ran it in an emulator, it all worked fine. However, when I tested it with my repro cart, the save data wouldn't load correctly.
+                                After asking around about this, I found out that this was because repro carts use flash storage and they patch the game so that it writes/loads to and from flash.
+                                To confirm this (and to find where in the ROM this was stored), 
+                                I wrote a simple memory viewer, looked at 0x0100 (the entrypoint for Game Boy programs) and converted the bytes into instructions.
+                                Normally, there would be a nop here followed by a jump to 0x0150. However, instead there was a jump to some code which loaded the save from flash, followed by a jump to 0x0150.
+                                After seeing how the repro cart handled this, I was able to update my program to work for both original cartridges and for repro cartridges.
+
+
+                                <br />
+                                One of the things that went wrong in this project was functions. In a normal program, you would define the functions you want to use, and then you would call them.
+                                However, that doesn't work here, as once the cartridge is swapped, the program no longer has access to those functions. The solution I came up with was to simply use macros,
+                                that way a function definition would be copied into the code whenever it was used. While this did work, it it a messy solution.
+                            </p>
+
+                            <h2>Where can I access the source code?</h2>
+                            <p>
+                                The source code can be found on my github account. Alternatively, you can click
+                                <a href="https://github.com/Daniel-Marker/GB-Ram-Program" target="_blank">here</a> to go straight to the github page.
+                                Additionally, if you want to read the writeup I did about this, you can click <a href="https://www.linkedin.com/pulse/utilising-cartridge-swapping-game-boy-daniel-marker/" target="_blank">here</a>.
+                            </p>
+
+                            <h2>Screenshots</h2>
+                            <span id="screenshots" style="display: flex; justify-content: center;">
+                                <!--default image-->
+                                <img id="img" src="images/gameboy-ram-screenshot-01.png" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                            </span>
+
+                            <script>
+                                var images = ["images/gameboy-ram-screenshot-01.png", "images/gameboy-ram-screenshot-02.png", "images/gameboy-ram-screenshot-03.png", "images/gameboy-ram-screenshot-04.png", "images/gameboy-ram-screenshot-05.png"];
+
+                                var index = 0;
+
+                                function output() {
+                                    index++;
+                                    if (index > images.length - 1) {
+                                        index = 0;
+                                    }
+
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                }
+
+                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                                function fadeIn(el) {
+                                    el.style.opacity = 0;
+                                    var tick = function () {
+                                        el.style.opacity = +el.style.opacity + 0.01;
+                                        if (+el.style.opacity < 1) {
+                                            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                        }
+                                    };
+                                    tick();
+                                }
+
+                                function nextPicture() {
+                                    index++;
+                                    if (index > images.length - 1) {
+                                        index = 0;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                function previousPicture() {
+                                    index--;
+                                    if (index < 0) {
+                                        index = images.length - 1;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                window.setInterval(output, 10000);
+                            </script>
+
+                            <br />
+
+                            <div style="text-align: center;">
+                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                                <button type="button" onclick="nextPicture()">Next</button>
+                            </div>
+
+                        </section>
+
+					</div>
+
+				<!-- Footer -->
+                    <footer id="footer">
+                <section>
+                    <h2>Social media</h2>
+                    <ul class="icons">
+                        <li><a href="https://www.linkedin.com/in/daniel-marker-311412195/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="https://twitter.com/DanielMarker15" target="_blank" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://github.com/Daniel-Marker" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </section>
+                <!--<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>-->
+                <p class="copyright" style="text-align: center;">&copy; Daniel Marker <span id="year"></span>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+
+            <script>
+                var year = new Date();
+                document.getElementById("year").innerHTML = year.getFullYear();
+            </script>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
