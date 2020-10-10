@@ -39,11 +39,22 @@
                             <br />
 
                             <h2>What is it?</h2>
-                            <p>This project is a framework for making RPGs for the Gameboy. Included is an example game showing off some of the features of the framework.</p>
+                            <p>
+                                This project is a framework for making RPGs for the Gameboy. Included is an example game showing off some of the features of the framework.
+                                <br />
+                                This project was made as my coursework for A Level Computing. For this, I decided that I would make a framework for making RPGs for the Gameboy. 
+                                After discussing this with my teacher, this was slightly changed to include a game showing off the features of the framework.
+                                As this was written from scratch in assembly, meeting this goal required me to implement a lot, including a combat system with defined stats for enemies and the player,
+                                a tile based map system where each tile can have an event on it 
+                                (an event being a collection of data including a pointer to a function to run when the player is stood on the tile, 
+                                an offset to specify which bit is used to tell what state the event is in (done or not done), and tiles to replace the existing map tile with based on the state of the event),
+                                a text output system which allows text to be output at different speeds, an inventory system and an item system 
+                                (where items consist of a name, a function pointer to call when the item is used, and data about the change in each stat when the item is used).
+                            </p>
 
                             <h2>Who did what?</h2>
                             <p>
-                                The library used for music was <a href="https://github.com/AntonioND/gbt-player" target="_blank">GBT Player</a>. Additionally, the music used was the test tracks that came with GBT Player.
+                                The library used for music was <a href="https://github.com/AntonioND/gbt-player" target="_blank">GBT Player</a>. Additionally, some of the test tracks that came with GBT Player were used for music.
                                 Apart from those parts, everything else was done by myself.
                             </p>
 
@@ -55,12 +66,29 @@
 
                             <h2>What went right/wrong during development?</h2>
                             <p>
-                                I think the biggest thing that went right with this project was that I actually finished it.
-                                Before this project, I had finished very few projects I had started. However with this, I was able to see it through to the end.
-                                Because of this and because of how difficult it was to do, I think this is the project I'm most proud of.
+                                One of the things that went right in this project was the map system. 
+                                When I started this project, I spent roughly a month planning this system before properly writing any code. 
+                                This was because this was a core system that was required for the rest of the project. 
+                                My first draft for the map system was that whenever the player moved, the entire visible region would be updated (20x18 tiles).
+                                This didn't work, as background data can only be updated during vblank, and this was far too much data to update during vblank.
+                                After this, I was unsure how to proceed. So, I took several RPGs and looked at them in an emulator to see how they did it 
+                                (note that I didn't look at their code, I instead looked at the background layer). 
+                                After looking at several, I noticed that they did it by moving the visible region and by updating the tiles that would now be visible. 
+                                I then spent a few weeks planning and prototyping, and I was able to get a version working based on this new method. 
+                                I think this system is the one I am most proud of out of the entire project, mainly due to the issue that I ran into with my first version, 
+                                as I was able to roughly figure out how a new version should work based only on seeing a limited view of how others worked. 
+                                Additionally, partway through implementing this I ran into a unique issue, where the code that updated new tiles needed to wrap around to the beginning of the current line.
+                                This was needed, as if you just incremented the memory addresses, you would go to the start of the next line instead of the start of the current line. 
+                                So, I needed code that could tell if it was at the end of the line, just from the memory address. 
+                                Initially, I thought I could just check if the lower nibble of the address was 0xF. This however didn't work as each line is 32 tiles, 
+                                so it would think it's at the end of a line halfway along as well as at the end. 
+                                To get around this, I realised that upper nibble of the lower byte was always odd at the end of the line and even halfway along the line. 
+                                I was now able to detect the end of a line by checking the lower byte of the address to see if the lower nibble was 0xF, and if bit 0 of the upper nibble was set 
+                                (bit 0 is the bit for 1, so if it's set then the address is not even).
+
                                 <br />
                                 Before I started development, one of the main things I had heard about the Gameboy was that the CPU was weak.
-                                Because of this, when I was writing code, I would try to optimise for time instead of for space.
+                                Because of this, when I was writing code, I tried to optimise for time instead of for space.
                                 This caused problems later on, as I made much of the data be uncompressed to make it quicker to access.
                                 When I had to allocate memory banks for everything I found that, due to the data being uncompressed, it was difficult to fit everything I needed in.
                                 Additionally, planning exactly what data would go in which memory bank was more difficult due to the large size of the data.

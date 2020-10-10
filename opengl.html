@@ -39,7 +39,14 @@
                             <br />
 
                             <h2>What is it?</h2>
-                            <p>This project is a simple walking simulator game made using OpenGL, freeglut and glew.</p>
+                            <p>
+                                This project is a simple walking simulator game made using OpenGL, freeglut and glew.
+                                <br />
+                                For this project, I had to make a 3D scene using OpenGL. So, I decided I would attempt to make a walking simulator where the player can explore a museum.
+                                For this, I had to make a basic 3D engine from scratch using modern OpenGL (4.5). This required me to implement a basic lighting system (including point and directional lights),
+                                loading a mesh from .obj files, loading textures from .bmp, .tga and .raw files, a basic font rendering system using shaders,
+                                collison detection using the separating axis theorem, a simple input manager and skyboxes.
+                            </p>
 
                             <h2>Who did what?</h2>
                             <p>
@@ -105,7 +112,7 @@
                                 <br />
 
                                 Another thing I think went well was transparent objects.
-                                Getting transparent objects rendering correctly required my program to sort objects into transparent and opaque each frame.
+                                Getting transparent objects rendering correctly required my program to sort objects into transparent and opaque each frame (per frame as an object could swap if its texture changed).
                                 It then rendered all opaque objects and sorted the transparent objects by their distance from the camera and rendered them back to front.
                                 One downside of the way I implemented transparent objects is that the back faces of transparent objects aren't visible. This can be seen in the display cases.
 
