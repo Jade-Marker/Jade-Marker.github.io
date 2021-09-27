@@ -1,4 +1,4 @@
-# Daniel-Marker.github.io
+# Jade-Marker.github.io
 
 Portfolio website made as part of the Professional Development And Games Industry Employability module for Computer Games Programming at Staffordshire University
 
