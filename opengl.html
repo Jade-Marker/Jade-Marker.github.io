@@ -15,200 +15,200 @@
 	<body class="is-preload">
 
 		<!-- Wrapper -->
-			<div id="wrapper">
+        <div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-                        <h1>OpenGL Project</h1>
-					</header>
+            <!-- Header -->
+            <header id="header">
+                <h1>OpenGL Project</h1>
+            </header>
 
-				<!-- Main -->
-					<div id="main">
+            <!-- Main -->
+            <div id="main">
 
-						<!-- Content -->
-                        <section id="content" class="main">
-                            <span class="image main"><img src="images/opengl-full-screenshot.png" alt="" /></span>
+                <!-- Content -->
+                <section id="content" class="main">
+                    <span class="image main"><img src="images/opengl-full-screenshot.png" alt="" /></span>
 
-                            <span id="video" style="display: flex; justify-content: center;">
-                                <p>
-                                    <div class="iframe-container">
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/qOrk5F22B4o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </div>
-                                </p>
-                            </span>
-                            <br />
-
-                            <h2>What is it?</h2>
-                            <p>
-                                This project is a simple walking simulator game made using OpenGL, freeglut and glew.
-                                <br />
-                                For this project, I had to make a 3D scene using OpenGL. So, I decided I would attempt to make a walking simulator where the player can explore a museum.
-                                For this, I had to make a basic 3D engine from scratch using modern OpenGL (4.5). This required me to implement a basic lighting system (including point and directional lights),
-                                loading a mesh from .obj files, loading textures from .bmp, .tga and .raw files, a basic font rendering system using shaders,
-                                collison detection using the separating axis theorem, a simple input manager and skyboxes.
-                            </p>
-
-                            <h2>Who did what?</h2>
-                            <p>
-                                During tutorials, we were given some code which could be used to make a basic OpenGL application.
-                                However, this was for OpenGL 1.1. So, I ported the tutorial code to modern OpenGL and updated it
-                                (adding Buffer, BufferLayout, Renderer, Shader and VAO classes) based off of code from
-                                <a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2">The Cherno's OpenGL series (1-27).</a> <br />
-                                Additional resources used: <br />
-                                <a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps                                                      ">Tutorial that Cubemap class and Skybox shaders are based off </a><br />
-                                <a href="https://learnopengl.com/Getting-started/Camera                                                        ">Tutorial that Camera is based off                            </a><br />
-                                <a href="https://www.jkh.me/files/tutorials/Separating%20Axis%20Theorem%20for%20Oriented%20Bounding%20Boxes.pdf">Source used to get the axis and formula for SAT              </a><br />
-                                <a href="https://learnopengl.com/Lighting/Basic-Lighting">Tutorial used for lighting in shaders         </a><br />
-                                <a href="https://learnopengl.com/Lighting/Materials">Tutorial used for materials in shaders         </a><br />
-                                <br />
-
-                                In addition to using some tutorials, the following textures and 3d models were used: <br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=59077&picture=white-dove             ">Dove image                         </a><br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=252344&picture=chinese-flying-frog   ">Frog image                         </a><br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=6068&picture=robin-on-branch         ">Robin image                        </a><br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=7134&picture=baby-antelope           ">Deer image                         </a><br />
-                                <a href="https://opengameart.org/content/frame-with-paintingvan-gogh                                       ">Frame model                        </a><br />
-                                <a href="https://opengameart.org/content/pinguin-low-poly                                                  ">Penguin model and texture          </a><br />
-                                <a href="https://opengameart.org/content/perch-fish                                                        ">Fish model and texture             </a><br />
-                                <a href="https://opengameart.org/content/glass                                                             ">Glass texture                      </a><br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=17467&picture=wooden-fence           ">Fence texture                      </a><br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=61678&picture=grass-background       ">Grass texture                      </a><br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=43841&picture=gray-brick-wall-texture">Brick texture                      </a><br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=63744&picture=old-wood-texture       ">Wood texture                       </a><br />
-                                <a href="https://opengameart.org/content/forest-skyboxes                                                   ">Skybox texture                     </a><br />
-                                <a href="https://www.fontspace.com/press-start-2p-font-f11591                                              ">Press Start 2P Font                </a><br />
-                                <a href="http://www.codehead.co.uk/cbfg/                                                                   ">Tool used to create bitmap of font </a><br />
-                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=4397&picture=stone-wall-background   ">Stone texture                      </a><br />
-                                <a href="https://sketchfab.com/3d-models/hauffiopteryx-typicus-tu246-c283bde01d464783a2c3fafb9e94b666      ">Fossil model and texture           </a><br />
-                                NOTE: the fossil model has had the decimate modifyer applied to it in Blender to decrease the tri count
-                                <br /><br />
-
-
-                                Everything else in the project was done by myself
-                            </p>
-
-                            <h2>When was it worked on?</h2>
-                            <p>Work started on the project around January of 2020 and finished at the end of April 2020</p>
-
-                            <h2>What are the controls?</h2>
-                            <p>
-                                WASD to move and mouse to move the camera. I and O can be pressed to dim the lights and to turn them back on.
-                                P can be pressed to make the penguins rotate about the z axis.
-                            </p>
-
-                            <h2>What went right/wrong during development?</h2>
-                            <p>
-                                One of the things that went right was shaders. Up until starting this project, I had never done shader programming or branchless programming.
-                                Because of this, I was unsure if I would be able to figure them out. I was however able to write basic lighting shaders and a wave effect shader for the fish.
-                                I do think however that the code surrounding the shaders could have been improved to allow for #include.
-                                This way, code wouldn't have had to have been copied from one shader to another.
-                                <br />
-
-                                Another thing that I think went well was the collision detection code.
-                                For a project like this, it would be expected that the algorithm used for collision detection would be aabb (axis aligned bounding boxes).
-                                I however chose not to use this as it does not allow for rotating colliders. I instead chose to use SAT (separating axis theorem).
-                                It took me a while to fully understand the algorithm. However, once I understood it, writing the code for it didn't take too long.
-                                This now allowed me flexibility in how objects and their colliders were positioned in the level.
-                                <br />
-
-                                Another thing I think went well was transparent objects.
-                                Getting transparent objects rendering correctly required my program to sort objects into transparent and opaque each frame (per frame as an object could swap if its texture changed).
-                                It then rendered all opaque objects and sorted the transparent objects by their distance from the camera and rendered them back to front.
-                                One downside of the way I implemented transparent objects is that the back faces of transparent objects aren't visible. This can be seen in the display cases.
-
-                                <br /> <br />
-                                One of the big problems with this project is that scene objects were all defined in the code.
-                                This meant that any changes to the level layout required recompiling the project.
-                                Additionally, it meant that creating the level required writing a bit of code and then checking how it looked.
-                                Then editing the code slightly and checking how that looked, and so on.
-                                This was a tedious process that could have been solved by having an editor. I chose however to not attempt to make an editor, as I didn't think I had the time to.
-
-                            </p>
-
-                            <h2>Where can I play the game/access the source code?</h2>
-                            <p>
-                                Both the game and the source code can be found on my github account. Alternatively, you can click
-                                <a href="https://github.com/Daniel-Marker/modernOpenGL" target="_blank">here</a> to go straight to the github page.
-                            </p>
-
-                            <h2>Screenshots</h2>
-                            <span id="screenshots" style="display: flex; justify-content: center;">
-                                <!--default image-->
-                                <img id="img" src="images/opengl-screenshot-01.PNG" style="max-height: 100vh; max-width: 100%; margin: auto" />
-                            </span>
-
-                            <script>
-                                var images = ["images/opengl-screenshot-01.PNG", "images/opengl-screenshot-02.PNG", "images/opengl-screenshot-03.png",
-                                    "images/opengl-screenshot-04.png", "images/opengl-screenshot-05.png", "images/opengl-screenshot-06.png"];
-
-                                var index = 0;
-
-                                function output() {
-                                    index++;
-                                    if (index > images.length - 1) {
-                                        index = 0;
-                                    }
-
-                                    document.getElementById("img").src = images[index];
-                                    fadeIn(document.getElementById("img"));
-                                }
-
-                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
-                                function fadeIn(el) {
-                                    el.style.opacity = 0;
-                                    var tick = function () {
-                                        el.style.opacity = +el.style.opacity + 0.01;
-                                        if (+el.style.opacity < 1) {
-                                            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
-                                        }
-                                    };
-                                    tick();
-                                }
-
-                                function nextPicture() {
-                                    index++;
-                                    if (index > images.length - 1) {
-                                        index = 0;
-                                    }
-                                    document.getElementById("img").src = images[index];
-                                    fadeIn(document.getElementById("img"));
-                                    clearInterval();
-                                }
-
-                                function previousPicture() {
-                                    index--;
-                                    if (index < 0) {
-                                        index = images.length - 1;
-                                    }
-                                    document.getElementById("img").src = images[index];
-                                    fadeIn(document.getElementById("img"));
-                                    clearInterval();
-                                }
-
-                                window.setInterval(output, 10000);
-                            </script>
-                            <br />
-
-                            <div style="text-align: center;">
-                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
-                                <button type="button" onclick="nextPicture()">Next</button>
+                    <span id="video" style="display: flex; justify-content: center;">
+                        <p>
+                            <div class="iframe-container">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/qOrk5F22B4o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
-                        </section>
+                        </p>
+                    </span>
+                    <br />
 
-					</div>
+                    <h2>What is it?</h2>
+                    <p>
+                        This project is a simple walking simulator game made using OpenGL, freeglut and glew.
+                        <br />
+                        For this project, I had to make a 3D scene using OpenGL. So, I decided I would attempt to make a walking simulator where the player can explore a museum.
+                        For this, I had to make a basic 3D engine from scratch using modern OpenGL (4.5). This required me to implement a basic lighting system (including point and directional lights),
+                        loading a mesh from .obj files, loading textures from .bmp, .tga and .raw files, a basic font rendering system using shaders,
+                        collison detection using the separating axis theorem, a simple input manager and skyboxes.
+                    </p>
 
-				<!-- Footer -->
-                    <footer id="footer">
+                    <h2>Who did what?</h2>
+                    <p>
+                        During tutorials, we were given some code which could be used to make a basic OpenGL application.
+                        However, this was for OpenGL 1.1. So, I ported the tutorial code to modern OpenGL and updated it
+                        (adding Buffer, BufferLayout, Renderer, Shader and VAO classes) based off of code from
+                        <a href="https://www.youtube.com/playlist?list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2">The Cherno's OpenGL series (1-27).</a> <br />
+                        Additional resources used: <br />
+                        <a href="https://learnopengl.com/Advanced-OpenGL/Cubemaps                                                      ">Tutorial that Cubemap class and Skybox shaders are based off </a><br />
+                        <a href="https://learnopengl.com/Getting-started/Camera                                                        ">Tutorial that Camera is based off                            </a><br />
+                        <a href="https://www.jkh.me/files/tutorials/Separating%20Axis%20Theorem%20for%20Oriented%20Bounding%20Boxes.pdf">Source used to get the axis and formula for SAT              </a><br />
+                        <a href="https://learnopengl.com/Lighting/Basic-Lighting">Tutorial used for lighting in shaders         </a><br />
+                        <a href="https://learnopengl.com/Lighting/Materials">Tutorial used for materials in shaders         </a><br />
+                        <br />
+
+                        In addition to using some tutorials, the following textures and 3d models were used: <br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=59077&picture=white-dove             ">Dove image                         </a><br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=252344&picture=chinese-flying-frog   ">Frog image                         </a><br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=6068&picture=robin-on-branch         ">Robin image                        </a><br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=7134&picture=baby-antelope           ">Deer image                         </a><br />
+                        <a href="https://opengameart.org/content/frame-with-paintingvan-gogh                                       ">Frame model                        </a><br />
+                        <a href="https://opengameart.org/content/pinguin-low-poly                                                  ">Penguin model and texture          </a><br />
+                        <a href="https://opengameart.org/content/perch-fish                                                        ">Fish model and texture             </a><br />
+                        <a href="https://opengameart.org/content/glass                                                             ">Glass texture                      </a><br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=17467&picture=wooden-fence           ">Fence texture                      </a><br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=61678&picture=grass-background       ">Grass texture                      </a><br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=43841&picture=gray-brick-wall-texture">Brick texture                      </a><br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=63744&picture=old-wood-texture       ">Wood texture                       </a><br />
+                        <a href="https://opengameart.org/content/forest-skyboxes                                                   ">Skybox texture                     </a><br />
+                        <a href="https://www.fontspace.com/press-start-2p-font-f11591                                              ">Press Start 2P Font                </a><br />
+                        <a href="http://www.codehead.co.uk/cbfg/                                                                   ">Tool used to create bitmap of font </a><br />
+                        <a href="https://www.publicdomainpictures.net/en/view-image.php?image=4397&picture=stone-wall-background   ">Stone texture                      </a><br />
+                        <a href="https://sketchfab.com/3d-models/hauffiopteryx-typicus-tu246-c283bde01d464783a2c3fafb9e94b666      ">Fossil model and texture           </a><br />
+                        NOTE: the fossil model has had the decimate modifyer applied to it in Blender to decrease the tri count
+                        <br /><br />
+
+
+                        Everything else in the project was done by myself
+                    </p>
+
+                    <h2>When was it worked on?</h2>
+                    <p>Work started on the project around January of 2020 and finished at the end of April 2020</p>
+
+                    <h2>What are the controls?</h2>
+                    <p>
+                        WASD to move and mouse to move the camera. I and O can be pressed to dim the lights and to turn them back on.
+                        P can be pressed to make the penguins rotate about the z axis.
+                    </p>
+
+                    <h2>What went right/wrong during development?</h2>
+                    <p>
+                        One of the things that went right was shaders. Up until starting this project, I had never done shader programming or branchless programming.
+                        Because of this, I was unsure if I would be able to figure them out. I was however able to write basic lighting shaders and a wave effect shader for the fish.
+                        I do think however that the code surrounding the shaders could have been improved to allow for #include.
+                        This way, code wouldn't have had to have been copied from one shader to another.
+                        <br />
+
+                        Another thing that I think went well was the collision detection code.
+                        For a project like this, it would be expected that the algorithm used for collision detection would be aabb (axis aligned bounding boxes).
+                        I however chose not to use this as it does not allow for rotating colliders. I instead chose to use SAT (separating axis theorem).
+                        It took me a while to fully understand the algorithm. However, once I understood it, writing the code for it didn't take too long.
+                        This now allowed me flexibility in how objects and their colliders were positioned in the level.
+                        <br />
+
+                        Another thing I think went well was transparent objects.
+                        Getting transparent objects rendering correctly required my program to sort objects into transparent and opaque each frame (per frame as an object could swap if its texture changed).
+                        It then rendered all opaque objects and sorted the transparent objects by their distance from the camera and rendered them back to front.
+                        One downside of the way I implemented transparent objects is that the back faces of transparent objects aren't visible. This can be seen in the display cases.
+
+                        <br /> <br />
+                        One of the big problems with this project is that scene objects were all defined in the code.
+                        This meant that any changes to the level layout required recompiling the project.
+                        Additionally, it meant that creating the level required writing a bit of code and then checking how it looked.
+                        Then editing the code slightly and checking how that looked, and so on.
+                        This was a tedious process that could have been solved by having an editor. I chose however to not attempt to make an editor, as I didn't think I had the time to.
+
+                    </p>
+
+                    <h2>Where can I play the game/access the source code?</h2>
+                    <p>
+                        Both the game and the source code can be found on my github account. Alternatively, you can click
+                        <a href="https://github.com/Jade-Marker/modernOpenGL" target="_blank">here</a> to go straight to the github page.
+                    </p>
+
+                    <h2>Screenshots</h2>
+                    <span id="screenshots" style="display: flex; justify-content: center;">
+                        <!--default image-->
+                        <img id="img" src="images/opengl-screenshot-01.PNG" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                    </span>
+
+                    <script>
+                        var images = ["images/opengl-screenshot-01.PNG", "images/opengl-screenshot-02.PNG", "images/opengl-screenshot-03.png",
+                            "images/opengl-screenshot-04.png", "images/opengl-screenshot-05.png", "images/opengl-screenshot-06.png"];
+
+                        var index = 0;
+
+                        function output() {
+                            index++;
+                            if (index > images.length - 1) {
+                                index = 0;
+                            }
+
+                            document.getElementById("img").src = images[index];
+                            fadeIn(document.getElementById("img"));
+                        }
+
+                        //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                        function fadeIn(el) {
+                            el.style.opacity = 0;
+                            var tick = function () {
+                                el.style.opacity = +el.style.opacity + 0.01;
+                                if (+el.style.opacity < 1) {
+                                    (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                }
+                            };
+                            tick();
+                        }
+
+                        function nextPicture() {
+                            index++;
+                            if (index > images.length - 1) {
+                                index = 0;
+                            }
+                            document.getElementById("img").src = images[index];
+                            fadeIn(document.getElementById("img"));
+                            clearInterval();
+                        }
+
+                        function previousPicture() {
+                            index--;
+                            if (index < 0) {
+                                index = images.length - 1;
+                            }
+                            document.getElementById("img").src = images[index];
+                            fadeIn(document.getElementById("img"));
+                            clearInterval();
+                        }
+
+                        window.setInterval(output, 10000);
+                    </script>
+                    <br />
+
+                    <div style="text-align: center;">
+                        <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                        <button type="button" onclick="nextPicture()">Next</button>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Footer -->
+            <footer id="footer">
                 <section>
                     <h2>Social media</h2>
                     <ul class="icons">
-                        <li><a href="https://www.linkedin.com/in/daniel-marker-311412195/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
-                        <li><a href="https://twitter.com/DanielMarker15" target="_blank" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-                        <li><a href="https://github.com/Daniel-Marker" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                        <li><a href="https://www.linkedin.com/in/jade-marker-311412195/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="https://twitter.com/JadeMarker15" target="_blank" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://github.com/Jade-Marker" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
                     </ul>
                 </section>
                 <!--<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>-->
-                <p class="copyright" style="text-align: center;">&copy; Daniel Marker <span id="year"></span>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+                <p class="copyright" style="text-align: center;">&copy; Jade Marker <span id="year"></span>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
             </footer>
 
             <script>
@@ -216,7 +216,7 @@
                 document.getElementById("year").innerHTML = year.getFullYear();
             </script>
 
-			</div>
+        </div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
