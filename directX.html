@@ -1,0 +1,221 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        <title>DirectX 11 Engine</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+                        <h1>DirectX 11 Engine</h1>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+                        <section id="content" class="main">
+                            <span class="image main"><img src="images/directx-full-screenshot.png" alt="" /></span>
+
+                            <span id="video" style="display: flex; justify-content: center;">
+                                <p>
+                                    <div class="iframe-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4B1V-CY2ZT0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </p>
+                            </span>
+                            <br />
+
+                            <h2>What is it?</h2>
+                            <p>
+                                This project is a graphics engine made using DirectX 11. <br />
+                                For this project, I had to make a graphics engine in Direct X 11. 
+                                To do this, I needed to implement features such as texture and model loading, per-pixel lighting and skyboxes.
+                                In addition, I decided that I would add full scene loading and external lua scripting so that it could be used as a basic game engine.
+
+                            </p>
+
+                            <h2>Who did what?</h2>
+                            <p>
+                                <h3>Libraries used</h3>
+                                <a href="https://github.com/ThePhD/sol2" target="_blank">Sol2</a> <br />
+                                <a href="https://www.lua.org/download.html" target="_blank">Lua</a> <br />
+                                <a href="https://github.com/nlohmann/json" target="_blank">JSON for Modern C++</a> <br />
+                                <a href="https://github.com/Microsoft/DirectXTex" target="_blank">DDSTextureLoader</a> <br />
+                                OBJ loader: provided by uni <br />
+                                <br />
+
+                                <h3>Tools used</h3>
+                                <a href="https://github.com/Microsoft/DirectXTex/wiki/Texassemble" target="_blank">Texassemble</a> <br />
+                                <br />
+
+                                <h3>Models used</h3>
+                                <a href="https://opengameart.org/content/cauldron" target="_blank">Cauldron and broth</a> <br />
+                                <a href="https://opengameart.org/content/perch-fish" target="_blank">Fish</a> <br />
+                                <a href="https://sketchfab.com/3d-models/witchs-hat-bab35ae74065455d94e5185fccfa7e9e" target="_blank">Witch hat</a> <br />
+                                <br />
+
+                                <h3>Textures used</h3>
+                                <a href="https://learnopengl.com/Lighting/Lighting-maps" target="_blank">Box textures</a> <br />
+                                <a href="https://opengameart.org/content/glass" target="_blank">Glass texture</a> <br />
+                                <a href="https://opengameart.org/content/36-free-ground-textures-diffuse-normals-grassleaves01diffusejpg" target="_blank">Ground texture</a> <br />
+                                <a href="https://opengameart.org/content/stone-texture-2" target="_blank">Rock texture</a> <br />
+                                <a href="https://opengameart.org/content/stormy-days-skybox" target="_blank">Skybox images</a> <br />
+                                <a href="https://opengameart.org/content/more-bushes-batch-of-30-seamless-textures-with-normalmaps" target="_blank">Tree texture</a> <br />
+                                <a href="https://opengameart.org/content/wood-texture-tiles" target="_blank">Wood texture</a> <br />
+                                ChainLink(2): provided by uni<br />
+                                Crate textures: provided by uni<br />
+                                <br />
+
+                                Everything else in the project was done by myself
+
+                            </p>
+
+                            <h2>When was it worked on?</h2>
+                            <p>Work started on the project around September 2020 and finished around Christmas 2020</p>
+
+                            <h2>What are the controls?</h2>
+                            <p>WASD to move and the mouse to look. 1-5 to swap to the debug camera, static camera, top down camera, third person camera and first person camera respectively</p>
+
+                            <h2>What went right/wrong during development?</h2>
+                            <p>
+                                One of the things that went right in this project was the heavy use of a component system. 
+                                When I was working on my OpenGL project, I didn't use a component system as I wasn't aware of the design pattern at the time. 
+                                However, I quickly ran into the problems that just using inheritance brings. So, for this project, I decided early on that I would use a component system.
+                                I found that this made it far easier to add new functionality, and that it made the code much cleaner. 
+
+                                <br />
+                                Another one of the things that went right in this project was the scripting support.
+                                For this project, I wanted to allow for external scripting so that changes could be made to some parts of code without having to recompile.
+                                To do this, I used Lua and Sol2. 
+                                Using Sol2, I was able to create the CustomComponent class, which initialises the lua script and passes data between lua and C++.
+                                As a result of this, most of the cameras in the program were able to be written using lua.
+
+                                <br />
+                                One of the things that went both right and wrong in this project was the level loading.
+                                One of the features that we had to provide for this was positioning assets via a configuration file. 
+                                I decided to expand on this and have the entire scene be specified in a file.
+                                While I did get this all working, the code ended up being quite messy, 
+                                as each component need a separate LoadedComponent class which would load the necessary data. 
+                                A new component was then created, using the LoadedComponents data as parameters.
+                                This ended up not being much of a problem, as any new components could be created using lua
+                                via the CustomComponent. However, if I was to try and add new component types it would be a problem as each new component would need multiple classes to work.
+                            </p>
+
+                            <h2>Where can I access the source code?</h2>
+                            <p>
+                                The source code can be found on my github account. Alternatively, you can click
+                                <a href="https://github.com/Jade-Marker/DirectX" target="_blank">here</a> to go straight to the github page.
+                            </p>
+
+                            <h2>Screenshots</h2>
+                            <span id="screenshots" style="display: flex; justify-content: center;">
+                                <!--default image-->
+                                <img id="img" src="images/directx-screenshot-01.png" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                            </span>
+
+                            <script>
+                                var images = ["images/directx-screenshot-01.png", "images/directx-screenshot-02.png", "images/directx-screenshot-03.png", "images/directx-screenshot-04.png", "images/directx-screenshot-05.png"];
+
+                                var index = 0;
+
+                                function output() {
+                                    index++;
+                                    if (index > images.length - 1) {
+                                        index = 0;
+                                    }
+
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                }
+
+                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                                function fadeIn(el) {
+                                    el.style.opacity = 0;
+                                    var tick = function () {
+                                        el.style.opacity = +el.style.opacity + 0.01;
+                                        if (+el.style.opacity < 1) {
+                                            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                        }
+                                    };
+                                    tick();
+                                }
+
+                                function nextPicture() {
+                                    index++;
+                                    if (index > images.length - 1) {
+                                        index = 0;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                function previousPicture() {
+                                    index--;
+                                    if (index < 0) {
+                                        index = images.length - 1;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                window.setInterval(output, 10000);
+                            </script>
+
+                            <br />
+
+                            <div style="text-align: center;">
+                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                                <button type="button" onclick="nextPicture()">Next</button>
+                            </div>
+
+                        </section>
+
+					</div>
+
+				<!-- Footer -->
+            <footer id="footer">
+                <section>
+                    <h2>Social media</h2>
+                    <ul class="icons">
+                        <li><a href="https://www.linkedin.com/in/jade-marker-311412195/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="https://twitter.com/JadeMarker15" target="_blank" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://github.com/Jade-Marker" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </section>
+                <!--<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>-->
+                <p class="copyright" style="text-align: center;">&copy; Jade Marker <span id="year"></span>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+
+            <script>
+                var year = new Date();
+                document.getElementById("year").innerHTML = year.getFullYear();
+            </script>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

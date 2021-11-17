@@ -1,0 +1,220 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        <title>C# networking</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+                        <h1>C# networking</h1>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+                        <section id="content" class="main">
+                            <span class="image main"><img src="images/csharp-networking-full-screenshot.png" alt="" /></span>
+                            <span id="video" style="display: flex; justify-content: center;">
+                                <p>
+                                    <div class="iframe-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/OE2JmOj37Io" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </p>
+                            </span>
+                            <span id="video" style="display: flex; justify-content: center;">
+                                <p>
+                                    <div class="iframe-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/wnVhD8xIiTI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </p>
+                            </span>
+                            <br />
+
+                            <h2>What is it?</h2>
+                            <p>
+                                This project is a chat client and a basic game, both made using networking and multithreading in C#.<br />
+                                For this project, I had to make a chat client and a real time graphical program.
+                                So, I decided I would make the graphical component to be a basic 3D scene that players could walk around,
+                                and the chat client to be a chat room where users could sent global or private messages and play text based games.
+                            </p>
+
+                            <h2>Who did what?</h2>
+                            <p>
+                                <h3>Chat client</h3>
+                                <a href="https://game-icons.net/1x1/lorc/bird-twitter.html" target="_blank">Bird icon</a> <br />
+                                <a href="https://game-icons.net/1x1/lorc/cat.html" target="_blank">Cat icon</a> <br />
+                                <a href="https://game-icons.net/1x1/lorc/parrot-head.html" target="_blank">Parrot icon</a> <br />
+                                <a href="https://game-icons.net/1x1/lorc/octopus.html" target="_blank">Octopus icon</a> <br />
+                                <a href="https://game-icons.net/1x1/delapouite/labrador-head.html" target="_blank">Dog icon</a> <br /><br />
+
+                                <h3>Game</h3>
+                                <a href="https://www.monogame.net/" target="_blank">Monogame</a> <br />
+                                <a href="https://opengameart.org/content/sand-texture-seamless-texture-with-normalmap-sand1s0jpg" target="_blank">Sand texture</a> <br />
+                                <a href="https://www.publicdomainpictures.net/en/view-image.php?image=11981&picture=seabed" target="_blank">Seabed texture</a> <br />
+                                <a href="https://opengameart.org/content/water" target="_blank">Water texture</a> <br />
+                                <a href="https://opengameart.org/content/perch-fish" target="_blank">Fish model</a> <br />
+                                <a href="http://www.shawnhargreaves.com/blog/spritebatch-billboards-in-a-3d-world.html" target="_blank">Code used for text rendering in ClientName</a> <br />
+                                Everything else in the project was done by myself
+
+                            </p>
+
+                            <h2>When was it worked on?</h2>
+                            <p>Work started on the project around September 2020 and finished around Christmas 2020</p>
+
+                            <h2>What are the controls?</h2>
+                            <p>
+                                For the chat client, click on the name box to enter a name then click connect. To send a message, select the chat box, type the message then press enter or hit send.
+                                To use an emote, click on one of the emotes in the box next to the chat box. To send a private message, select a user from the client list, then send a message.
+                                To swap between private and public messages, hit the escape key.
+                                <br />
+                                For the game, WASD to move and the mouse to look.
+                            </p>
+
+                            <h2>What went right/wrong during development?</h2>
+                            <p>
+                                One of the things that went right in the game was the use of dead reckoning.
+                                If the client sent a new position to the server each time their position changed, there would be a lot of redundant data.
+                                So instead, the client sends its velocity when it changes. This allows each client to interpolate the position of the other clients.
+                                To keep this accurate, the client also periodically sends position/velocity data.
+                                With this implemented, the game is able to use less bandwidth.
+                                <br />
+
+                                One of the things that went wrong for the game was how the server handles the players.
+                                As mentioned earlier, each client sends position/velocity data periodically and when velocity changes.
+                                All the server does is pass this data on to each other client.
+                                While this method does work, it has a major flaw in that it fully trusts the data it receives from the client.
+                                This means that if a client cheats and moves out of bounds, the server is unable to stop them.
+                                While this isn't an issue for the current game (as no bounds checking was intended), this would obviously be an issue in a larger project.
+                                <br />
+
+                                One of the things that went right for the chat client was the use of encryption.
+                                When a client connects to the server, it sends an initial connection packet containing its public key. The server then responds with its own public key.
+                                From this point on, all data transmitted between the server and client is encrypted.
+                                <br />
+
+                                One of the things that went wrong for the chat client was the use of BinaryFormatter for serialisation.
+                                The BinaryFormatter is a bad choice for serialising data as when it deserialises, it will run some code of the deserialised type.
+                                As a result, remote code execution is possible.
+                                This is a vulnerability that I was aware of going into the project, however due to time constraints, I was not able to use an alternative method for serialisation.
+                            </p>
+
+                            <h2>Where can I access the source code?</h2>
+                            <p>
+                                The source code can be found on my github account. Alternatively, you can click
+                                <a href="https://github.com/Jade-Marker/CNA-chat-client" target="_blank">here</a> for the chat client or
+                                <a href="https://github.com/Jade-Marker/CNA-Graphics" target="_blank">here</a> for the game.
+                            </p>
+
+                            <h2>Screenshots</h2>
+                            <span id="screenshots" style="display: flex; justify-content: center;">
+                                <!--default image-->
+                                <img id="img" src="images/csharp-networking-screenshot-01.png" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                            </span>
+
+                            <script>
+                                var images = ["images/csharp-networking-screenshot-01.png", "images/csharp-networking-screenshot-02.png", "images/csharp-networking-screenshot-03.png", "images/csharp-networking-screenshot-04.png", "images/csharp-networking-screenshot-05.png", "images/csharp-networking-screenshot-06.png", "images/csharp-networking-screenshot-07.png"];
+
+                                var index = 0;
+
+                                function output() {
+                                    index++;
+                                    if (index > images.length - 1) {
+                                        index = 0;
+                                    }
+
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                }
+
+                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                                function fadeIn(el) {
+                                    el.style.opacity = 0;
+                                    var tick = function () {
+                                        el.style.opacity = +el.style.opacity + 0.01;
+                                        if (+el.style.opacity < 1) {
+                                            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                        }
+                                    };
+                                    tick();
+                                }
+
+                                function nextPicture() {
+                                    index++;
+                                    if (index > images.length - 1) {
+                                        index = 0;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                function previousPicture() {
+                                    index--;
+                                    if (index < 0) {
+                                        index = images.length - 1;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                window.setInterval(output, 10000);
+                            </script>
+
+                            <br />
+
+                            <div style="text-align: center;">
+                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                                <button type="button" onclick="nextPicture()">Next</button>
+                            </div>
+
+                        </section>
+
+					</div>
+
+				<!-- Footer -->
+            <footer id="footer">
+                <section>
+                    <h2>Social media</h2>
+                    <ul class="icons">
+                        <li><a href="https://www.linkedin.com/in/jade-marker-311412195/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="https://twitter.com/JadeMarker15" target="_blank" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
+                        <li><a href="https://github.com/Jade-Marker" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </section>
+                <!--<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>-->
+                <p class="copyright" style="text-align: center;">&copy; Jade Marker <span id="year"></span>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+
+            <script>
+                var year = new Date();
+                document.getElementById("year").innerHTML = year.getFullYear();
+            </script>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

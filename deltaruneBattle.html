@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-        <title>Gameboy Ram Program</title>
+        <title>Deltarune Battle</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -19,7 +19,7 @@
 
 				<!-- Header -->
 					<header id="header">
-                        <h1>Gameboy Ram Program</h1>
+                        <h1>Deltarune Battle</h1>
 					</header>
 
 				<!-- Main -->
@@ -27,12 +27,12 @@
 
 						<!-- Content -->
                         <section id="content" class="main">
-                            <span class="image main"><img src="images/gameboy-ram-full-screenshot.png" alt="" /></span>
+                            <span class="image main"><img src="images/deltarune-battle-full-screenshot.png" alt="" /></span>
 
                             <span id="video" style="display: flex; justify-content: center;">
                                 <p>
                                     <div class="iframe-container">
-                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/vweWmbKRVkM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/-4Y4CV32bV4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>
                                 </p>
                             </span>
@@ -40,68 +40,73 @@
 
                             <h2>What is it?</h2>
                             <p>
-                                This project is an exploration of the concept of cartridge swapping on the Game Boy.
-                                This is achieved by copying a program into RAM, and then telling the player to swap the cartridge.
-                                Once this is done, the program in RAM is run. The program can now interact with the new cartridge.
-                                <br />
-                                For this project, I wanted to see what I could do with the concept of cartridge swapping with the Game Boy.
-                                Aside from a flashcart, the only cartridge I owned was a Pokemon Red repro cart. So, I decided that I would attempt the following:
-                                launching into the game from the ram program, editing the save so that the player name changed, and using the games graphics functions to display a Pokemon.
+                                This project is a recreation of the battle scene from deltarune, made for the Game Boy Colour. <br />
+                                For this project, I had recently finished playing through deltarune chapter 2, and I thought that I could recreate the background from the combat on the Game Boy Color.
+                                After doing this, I realised that the gbcompo 21 game jam ended in just over a week. So, I decided to try and recreate as much of the combat as I could in that time.
+                                With the time limit, I was not able to make it playable, 
+                                however I was able to implement the backgrounds, music, full size sprites for Kris, Susie and Maus and animation for Kris.
                             </p>
 
                             <h2>Who did what?</h2>
                             <p>
-                                <a href="https://opengameart.org/content/squont8" target="_blank">The font used</a> <br />
-                                <a href="https://github.com/pret/pokered" target="_blank">The disassembly used</a><br />
-
+                                <a href="https://github.com/rednex/rgbds" target="_blank">RGBDS - Assembler, linker and graphics converter</a> <br />
+                                <a href="https://github.com/AntonioND/gbt-player" target="_blank">GBT Player - The audio library used</a><br />
                                 Everything else in the project was done by myself
 
                             </p>
 
                             <h2>When was it worked on?</h2>
-                            <p>Work started on the project around July of 2020 and finished at the start of September</p>
+                            <p>Work started on the project on the 19th of September 2021 and finished on the 1st of October 2021</p>
 
                             <h2>What are the controls?</h2>
-                            <p>Up and down move the arrow on the menu, and A is used to select an option. The bindings for these inputs are set by the emulator.</p>
+                            <p>As the program is just a visual demo, there are no controls</p>
 
                             <h2>What went right/wrong during development?</h2>
                             <p>
-                                One of the things that went right in this project was the readability of the code. 
-                                With my last project for the Game Boy, as I was still new to writing assembly code, the code isn't particularly readable in some areas.
-                                However, since then I have improved a lot. As a result, the code was significantly more readable this time. 
-                                Additionally, code was split between files much better than last time.
-                                
-                                <br />
-                                Another thing that went right was fixing issues as they arose. During this project, I ran into a strange problem with launching the game from my program.
-                                When I ran it in an emulator, it all worked fine. However, when I tested it with my repro cart, the save data wouldn't load correctly.
-                                After asking around about this, I found out that this was because repro carts use flash storage and they patch the game so that it writes/loads to and from flash.
-                                To confirm this (and to find where in the ROM this was stored), 
-                                I wrote a simple memory viewer, looked at 0x0100 (the entrypoint for Game Boy programs) and converted the bytes into instructions.
-                                Normally, there would be a nop here followed by a jump to 0x0150. However, instead there was a jump to some code which loaded the save from flash, followed by a jump to 0x0150.
-                                After seeing how the repro cart handled this, I was able to update my program to work for both original cartridges and for repro cartridges.
-
+                                One of the things that went right in this project was the asset ripper. As I wanted the program to be open source, I couldn't just include the original sprites.
+                                To get around this, I made a C# program which would rip the graphics from the games data.win file, and then cut them up into sections.
+                                Initially I thought that this would be difficult, however after some research I found that graphics data is stored as pngs in the data file.
+                                So, to get all of the games graphics, I searched through the file for png headers and then directly output what was found.
+                                After I had this working, I wrote a few batch files to convert the cut up graphics into the 2bpp format used by the Game Boy.
 
                                 <br />
-                                One of the things that went wrong in this project was functions. In a normal program, you would define the functions you want to use, and then you would call them.
-                                However, that doesn't work here, as once the cartridge is swapped, the program no longer has access to those functions. The solution I came up with was to simply use macros,
-                                that way a function definition would be copied into the code whenever it was used. While this did work, it it a messy solution.
+                                Another thing that went right with this project was the sprites. 
+                                Early on, I decided to try to use the full size sprites from the game instead of scaling them down or redrawing them.
+                                This presented a unique issue however, as the hardware only has the memory for 40 sprites.
+                                To solve this, I set up the memory to contain 2 rows of sprites and set an interrupt for the scanline after the first row.
+                                Then, I updated the memory for the first row to contain the third row of sprites.
+                                Using this technique, the only sprite limitation I had to worry about was the limit of 10 sprites per scanline.
+
+                                <br />
+                                Another thing that went right with this project was the music.
+                                As the project is recreating the combat, I wanted it to play a cover of rude buster. 
+                                However, I was unable to find anything online that was compatible with gbt player.
+                                So, I decided to try and make it myself. 
+                                While I have experience with the Game Boy and with this library, in the past I just used the examples the library provides to show that audio worked.
+                                So, this was my first time writing music for the system. While the cover isn't perfect, I am very happy with the results.
+
+                                <br />
+                                One of the things that went wrong with this project was the deadline.
+                                I only became aware of the game jam just over a week before the deadline, so I was very strapped for time.
+                                There were quite a few features that I wanted to add e.g. animations for all characters, some interactivity.
+                                However with such a short amount of time, I was unable to add these. 
                             </p>
 
                             <h2>Where can I access the source code?</h2>
                             <p>
                                 The source code can be found on my github account. Alternatively, you can click
-                                <a href="https://github.com/Jade-Marker/GB-Ram-Program" target="_blank">here</a> to go straight to the github page.
-                                Additionally, if you want to read the writeup I did about this, you can click <a href="https://www.linkedin.com/pulse/utilising-cartridge-swapping-game-boy-daniel-marker/" target="_blank">here</a>.
+                                <a href="https://github.com/Jade-Marker/Deltarune-Battle" target="_blank">here</a> to go straight to the github page.
+                                Additionally, the entry page can be found <a href="https://itch.io/jam/gbcompo21/rate/1216929" target="_blank">here</a>.
                             </p>
 
                             <h2>Screenshots</h2>
                             <span id="screenshots" style="display: flex; justify-content: center;">
                                 <!--default image-->
-                                <img id="img" src="images/gameboy-ram-screenshot-01.png" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                                <img id="img" src="images/deltarune-battle-screenshot-01.png" style="max-height: 100vh; max-width: 100%; margin: auto" />
                             </span>
 
                             <script>
-                                var images = ["images/gameboy-ram-screenshot-01.png", "images/gameboy-ram-screenshot-02.png", "images/gameboy-ram-screenshot-03.png", "images/gameboy-ram-screenshot-04.png", "images/gameboy-ram-screenshot-05.png"];
+                                var images = ["images/deltarune-battle-screenshot-01.png", "images/deltarune-battle-screenshot-02.png"];
 
                                 var index = 0;
 
