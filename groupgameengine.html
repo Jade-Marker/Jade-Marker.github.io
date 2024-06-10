@@ -1,0 +1,161 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        <title>Multiplatform group game engine</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+                        <h1>Multiplatform group game engine</h1>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+                        <section id="content" class="main">
+                            <span class="image main"><img src="images/group-full-screenshot.png" alt="" /></span>
+
+                            <h2>What is it?</h2>
+                            <p>
+                                This project is a multiplatform game engine supporting windows and android. It was made as a group of 10 as part of one of my modules. <br>
+
+                            </p>
+
+                            <h2>What did I do on the project?</h2>
+                            <p>
+                                For the engine, I worked on 3 main parts. The first was setting up the core systems, so we had a basic component design pattern set up. <br>
+                                Next, I worked on cache friendly components. With how the component design pattern is typically implemented, components are allocated all
+                                over memory. This means that iterating over them causes a cache miss most of the time. To work around this, I first allocate a large buffer.
+                                Then, all components are allocated directly from this buffer. To maintain cache friendliness, when components are deleted, all subsequent
+                                components are moved upwards in memory. This ensures that components are always tightly packed within the buffer. However, moving them
+                                around in memory invalidates pointers. To fix this, we use a custom ComponentPointer class which is a wrapper around a pointer.
+                                A reference to the instance is stored separately. Then, when components move in memory, we can follow the reference and update the pointer. <br>
+                                The last main part I worked on was serialisation/deserialisation. Since C++ doesn't have tags like C#, I worked on a macro that would
+                                automatically generate the needed functions given a list of variables to serialise/deserialise. Additionally, I created a C# project that
+                                scans the project and automatically serialises any public fields.
+                            </p>
+
+                            <h2>What went right/wrong during development?</h2>
+                            <p>
+                                One of the things that went right in this project was team work and communication.
+                                This was the largest group I've worked in so far, however we were able to keep things under control.
+                                This was due to frequent scrums and communication so that we all knew roughly what state everyones work was at.
+                                <br />
+                                One of the things that went wrong in this project was deleting components.
+                                This is because during the last few weeks, a bug was found with deleting components. As a result, there was 
+                                not enough time to solve this. So, I had to rip out large parts of the system to ensure the engine overall worked.
+
+                                </p>
+
+                            <h2>Screenshots</h2>
+                            <span id="screenshots" style="display: flex; justify-content: center;">
+                                <!--default image-->
+                                <img id="img" src="images/group-screenshot-01.png" style="max-height: 100vh; max-width: 100%; margin: auto" />
+                            </span>
+
+                            <script>
+                                var images = ["images/group-screenshot-01.png", "images/group-screenshot-02.png", "images/group-screenshot-03.png"];
+
+                                var index = 0;
+
+                                function output() {
+                                    index++;
+                                    if (index > images.length - 1) {
+                                        index = 0;
+                                    }
+
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                }
+
+                                //taken from https://stackoverflow.com/questions/33505032/fade-in-image-javascript
+                                function fadeIn(el) {
+                                    el.style.opacity = 0;
+                                    var tick = function () {
+                                        el.style.opacity = +el.style.opacity + 0.01;
+                                        if (+el.style.opacity < 1) {
+                                            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                                        }
+                                    };
+                                    tick();
+                                }
+
+                                function nextPicture() {
+                                    index++;
+                                    if (index > images.length - 1) {
+                                        index = 0;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                function previousPicture() {
+                                    index--;
+                                    if (index < 0) {
+                                        index = images.length - 1;
+                                    }
+                                    document.getElementById("img").src = images[index];
+                                    fadeIn(document.getElementById("img"));
+                                    clearInterval();
+                                }
+
+                                window.setInterval(output, 10000);
+                            </script>
+
+                            <br />
+
+                            <div style="text-align: center;">
+                                <button type="button" onclick="previousPicture()">Previous</button> &emsp;&emsp;&emsp;
+                                <button type="button" onclick="nextPicture()">Next</button>
+                            </div>
+
+                        </section>
+
+					</div>
+
+				<!-- Footer -->
+            <footer id="footer">
+                <section>
+                    <h2>Social media</h2>
+                    <ul class="icons">
+                        <li><a href="https://www.linkedin.com/in/jade-marker-311412195/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="https://github.com/Jade-Marker" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </section>
+                <!--<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>-->
+                <p class="copyright" style="text-align: center;">&copy; Jade Marker <span id="year"></span>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+
+            <script>
+                var year = new Date();
+                document.getElementById("year").innerHTML = year.getFullYear();
+            </script>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

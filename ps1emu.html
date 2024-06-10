@@ -1,0 +1,84 @@
+﻿<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+        <title>PS1 Emulator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+                        <h1>PS1 Emulator</h1>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+                        <section id="content" class="main">
+                            <span id="video" style="display: flex; justify-content: center;">
+                                <p>
+                                    <div class="iframe-container">
+                                        <iframe width="560" height="315" src="https://www.youtube.com/embed/MZA_u-3V6Ns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </p>
+                            </span>
+                            <br />
+
+                            <h2>What is it?</h2>
+                            <p>
+                               The project is a PS1 emulator made using Vulkan as a renderer. <br>
+                               Currently, it can run about 60 different instructions and can handle vertex color primitives.
+                            </p>
+
+                            <h2>Where can I access the source code?</h2>
+                            <p>
+                                As this is still in development, the source code is not currently available. However, once finished the source will be up on my github.
+                            </p>
+
+                        </section>
+
+					</div>
+
+				<!-- Footer -->
+            <footer id="footer">
+                <section>
+                    <h2>Social media</h2>
+                    <ul class="icons">
+                        <li><a href="https://www.linkedin.com/in/jade-marker-311412195/" target="_blank" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a></li>
+                        <li><a href="https://github.com/Jade-Marker" target="_blank" class="icon brands fa-github alt"><span class="label">GitHub</span></a></li>
+                    </ul>
+                </section>
+                <!--<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>-->
+                <p class="copyright" style="text-align: center;">&copy; Jade Marker <span id="year"></span>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+
+            <script>
+                var year = new Date();
+                document.getElementById("year").innerHTML = year.getFullYear();
+            </script>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
