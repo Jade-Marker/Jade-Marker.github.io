@@ -38,13 +38,58 @@
 
                             <h2>What is it?</h2>
                             <p>
-                               The project is a PS1 emulator made using Vulkan as a renderer. <br>
-                               Currently, it can run about 60 different instructions and can handle vertex color primitives.
+                               This was my dissertation project, which was a PS1 emulator. 
+                               I chose this as my dissertation as I am very passionate about the 5th generation of consoles,
+                               having written code for the PS1 before. 
+                               <br>
+                               For this, I was wanting to explore two main things. Firstly, how do you emulate a complex system
+                               like the PS1 while maintaining code readability. Secondly, the PS1 is from the early days of 3D,
+                               so it uses a fixed function pipeline. However, modern graphics apis do not. So the question then
+                               is how do you efficiently merge the two? Because of this, I used Vulkan as the renderer, as it is
+                               essentially the modern replacement for opengl.
+                            </p>
+                            
+                            <h2>What went right/wrong during development?</h2>
+                            <p>
+                                One of the big things that went wrong during development was I had some health issues. Because of this,
+                                I was unable to work on the project for several months. Because of this, when I was able to work
+                                on it again I was under very tight deadlines. So several ideas I had planned had to be scrapped.
+                                One of these was that I wanted to explore a couple different methods of emulating CPU instructions.
+                                The first being a big switch case statement with the code for each instruction, and the second
+                                being each instruction getting its own function.
+                                <br>
+                                This may seem like a tiny difference, however with the number of instructions the CPU has, 
+                                this can make a huge difference to code readability. There is however a potential problem.
+                                Since the second method requires a function call for each instruction, there is overhead 
+                                introduced by this. While it is minimal for one instruction, the CPU runs at ~30Mhz. So this
+                                small difference could end up having a large impact on performance.
+                                <br>
+                                One potential solution to this would be to force the functions to be inlined. However, to my 
+                                knowledge there is not a crossplatform way to do this, as the inline keyword in C++ does not
+                                force inlining.
+                                <br>
+                                When faced with the time limit, I went with the switch case method, as in theory it provided
+                                equal or better performance with less work required by me.
+
+                                <br><br>
+
+                                One of the big things that went well during development was research/understanding, as I was able
+                                to figure out the format of the MIPS 1 instruction set relatively quickly. 
+                                While I had worked with different assembly languages before, they were all simple ones that
+                                did not use pipelining. So I am quite proud that I was able to understand delay slots and write
+                                code to check they were emulated correctly.
+
+                                <br> <br>
+
+                                Another thing that went well was my learning a new graphics api. Up to this point, the most
+                                modern graphics api I had used was <br>Direct X 11. However, the jump from this to Vulkan/Direct X 12
+                                is quite significant. Despite this, I was able to understand it and integrate it with my CPU emulation.
                             </p>
 
                             <h2>Where can I access the source code?</h2>
                             <p>
-                                As this is still in development, the source code is not currently available. However, once finished the source will be up on my github.
+                                The source code can be found on my github account. Alternatively, you can click
+                                <a href="https://github.com/Jade-Marker/PS1-Emulator" target="_blank">here</a> to go straight to the github page.
                             </p>
 
                         </section>
